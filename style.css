@@ -1,61 +1,448 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f8f4;
+/* =======================================
+   MILAH.IN SCANNER V2
+   ======================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.container {
-    text-align: center;
-    padding: 20px;
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(135deg,#d8f3dc,#f8fff8);
+
+    color:#333;
+
+    min-height:100vh;
+
 }
 
-h1 {
-    color: #2e7d32;
-    margin-bottom: 5px;
+
+/* ===============================
+        CONTAINER
+================================ */
+
+.container{
+
+    width:95%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:30px 20px;
+
+    text-align:center;
+
 }
 
-p {
-    color: #555;
+
+/* ===============================
+        HEADER
+================================ */
+
+.logo img{
+
+    width:120px;
+
+    margin-bottom:15px;
+
 }
 
-#startBtn {
-    background: #2e7d32;
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 20px 0;
+h1{
+
+    color:#2e7d32;
+
+    font-size:38px;
+
+    font-weight:700;
+
 }
 
-#startBtn:hover {
-    opacity: 0.9;
+header p{
+
+    color:#555;
+
+    margin-top:12px;
+
+    line-height:1.7;
+
+    font-size:17px;
+
 }
 
-#webcam-container {
-    margin-top: 20px;
+
+/* ===============================
+        BUTTON
+================================ */
+
+#startBtn{
+
+    margin-top:30px;
+
+    background:#2e7d32;
+
+    color:white;
+
+    border:none;
+
+    padding:16px 35px;
+
+    font-size:18px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+
 }
 
-canvas {
-    border-radius: 15px;
-    border: 3px solid #2e7d32;
+#startBtn:hover{
+
+    transform:translateY(-3px);
+
+    background:#1b5e20;
+
 }
 
-.hasil {
-    margin-top: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    display: inline-block;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+/* ===============================
+        LOADING
+================================ */
+
+.loading{
+
+    display:none;
+
+    margin-top:20px;
+
+    font-size:17px;
+
+    color:#2e7d32;
+
 }
 
-.hasil h2 {
-    color: #2e7d32;
-    margin: 0;
+
+/* ===============================
+        KAMERA
+================================ */
+
+#webcam-container{
+
+    margin-top:30px;
+
 }
 
-.hasil p {
-    margin-top: 10px;
+canvas{
+
+    border-radius:20px;
+
+    border:5px solid white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+}
+
+
+/* ===============================
+        HASIL
+================================ */
+
+.hasil{
+
+    margin-top:30px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:white;
+
+    text-align:left;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+    animation:fade .5s ease;
+
+}
+
+.hasil h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+
+}
+
+.hasil h3{
+
+    margin-top:18px;
+
+    margin-bottom:8px;
+
+    font-size:18px;
+
+}
+
+.hasil p{
+
+    line-height:1.8;
+
+}
+
+
+/* ===============================
+        WARNA TIAP KATEGORI
+================================ */
+
+.organik{
+
+    border-left:10px solid #43a047;
+
+}
+
+.organik h2{
+
+    color:#2e7d32;
+
+}
+
+.anorganik{
+
+    border-left:10px solid #1e88e5;
+
+}
+
+.anorganik h2{
+
+    color:#1565c0;
+
+}
+
+.b3{
+
+    border-left:10px solid #d32f2f;
+
+}
+
+.b3 h2{
+
+    color:#c62828;
+
+}
+
+.residu{
+
+    border-left:10px solid #616161;
+
+}
+
+.residu h2{
+
+    color:#424242;
+
+}
+
+.unknown{
+
+    border-left:10px solid orange;
+
+}
+
+.unknown h2{
+
+    color:#ef6c00;
+
+}
+
+
+/* ===============================
+        TIPS
+================================ */
+
+.tips{
+
+    margin-top:35px;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    background:white;
+
+    text-align:left;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.1);
+
+}
+
+.tips h3{
+
+    color:#2e7d32;
+
+    margin-bottom:15px;
+
+}
+
+.tips ul{
+
+    padding-left:22px;
+
+}
+
+.tips li{
+
+    margin:10px 0;
+
+}
+
+
+/* ===============================
+        ABOUT
+================================ */
+
+.about{
+
+    margin-top:35px;
+
+    padding:25px;
+
+    background:white;
+
+    border-radius:18px;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.1);
+
+}
+
+.about h2{
+
+    color:#2e7d32;
+
+    margin-bottom:15px;
+
+}
+
+.about p{
+
+    line-height:1.8;
+
+    margin-bottom:12px;
+
+}
+
+
+/* ===============================
+        FOOTER
+================================ */
+
+footer{
+
+    margin-top:40px;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+
+/* ===============================
+        ERROR CARD
+================================ */
+
+.error-card{
+
+    background:#ffebee;
+
+    color:#b71c1c;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.1);
+
+}
+
+.error-card h2{
+
+    margin-bottom:15px;
+
+}
+
+
+/* ===============================
+        ANIMASI
+================================ */
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ===============================
+        RESPONSIVE HP
+================================ */
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:30px;
+
+    }
+
+    canvas{
+
+        width:100% !important;
+
+        height:auto !important;
+
+    }
+
+    .hasil{
+
+        padding:20px;
+
+    }
+
+    .hasil h2{
+
+        font-size:24px;
+
+    }
+
+    .container{
+
+        width:95%;
+
+    }
+
 }

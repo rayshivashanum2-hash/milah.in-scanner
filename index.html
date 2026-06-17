@@ -3,31 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milah.in Scanner Sampah</title>
+
+    <title>Milah.in Scanner</title>
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tensorflow -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+
+    <!-- Teachable Machine -->
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>♻️ Milah.in</h1>
-        <p>Scanner Klasifikasi Sampah</p>
+<div class="container">
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="logo">
+
+            <!-- Ganti logo.png dengan logo Milah.in milikmu -->
+
+            <img src="logo.png" alt="Logo Milah.in">
+
+        </div>
+
+        <h1>♻️ Milah.in Scanner</h1>
+
+        <p>
+            Arahkan kamera ke sampah untuk mengetahui jenis,
+            cara pengelolaan, serta waktu penguraiannya.
+        </p>
+
+    </header>
+
+
+    <!-- Kamera -->
+
+    <section class="camera-section">
 
         <button id="startBtn">
-            Aktifkan Kamera
+
+            📷 Aktifkan Kamera
+
         </button>
+
+        <div id="loading" class="loading">
+
+            Memuat model...
+
+        </div>
 
         <div id="webcam-container"></div>
 
-        <div id="label-container">
-            Menunggu kamera...
-        </div>
-    </div>
+    </section>
 
-    <script src="script.js"></script>
+
+    <!-- Hasil Scan -->
+
+    <section>
+
+        <div id="label-container"></div>
+
+    </section>
+
+
+    <!-- Tips -->
+
+    <section class="tips">
+
+        <h3>💡 Tips Scan</h3>
+
+        <ul>
+
+            <li>Gunakan pencahayaan yang cukup.</li>
+
+            <li>Arahkan kamera hanya ke satu objek.</li>
+
+            <li>Dekatkan objek sekitar 20–40 cm.</li>
+
+            <li>Pastikan objek terlihat jelas.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- Tentang -->
+
+    <section class="about">
+
+        <h2>Tentang Milah.in</h2>
+
+        <p>
+
+            Milah.in merupakan aplikasi edukasi berbasis
+            Artificial Intelligence yang membantu masyarakat
+            mengenali jenis sampah dengan teknologi
+            Teachable Machine.
+
+        </p>
+
+        <p>
+
+            Setelah sampah terdeteksi,
+            aplikasi akan memberikan
+            informasi mengenai jenis sampah,
+            cara pengelolaan,
+            serta waktu penguraiannya.
+
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Milah.in
+
+            <br>
+
+            Smart Waste Scanner with AI
+
+        </p>
+
+    </footer>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>

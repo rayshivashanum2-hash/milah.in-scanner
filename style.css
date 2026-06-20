@@ -1,6 +1,13 @@
-/* =======================================
-   MILAH.IN SCANNER V2
-   ======================================= */
+/* ===================================================
+   MILAH.IN SCANNER V3 PREMIUM
+   STYLE.CSS
+=================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =========================
+   RESET
+========================= */
 
 *{
     margin:0;
@@ -8,92 +15,412 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
 
     font-family:'Poppins',sans-serif;
 
-    background:linear-gradient(135deg,#d8f3dc,#f8fff8);
+    background:linear-gradient(
+        180deg,
+        #d8f3dc,
+        #f5fff7
+    );
 
-    color:#333;
+    color:#222;
+
+    display:flex;
+    justify-content:center;
 
     min-height:100vh;
 
+    padding:30px 15px;
+
 }
 
-
-/* ===============================
-        CONTAINER
-================================ */
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
 
-    width:95%;
+    width:100%;
+    max-width:430px;
 
-    max-width:900px;
+}
 
-    margin:auto;
+/* =========================
+   HEADER
+========================= */
 
-    padding:30px 20px;
+header{
 
     text-align:center;
+
+    margin-bottom:25px;
 
 }
 
 
-/* ===============================
-        HEADER
-================================ */
 
+@keyframes logoFloat{
 
+    0%{
 
-h1{
+        transform:translateY(0);
 
-    color:#1cb855;
+    }
 
-    font-size:38px;
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+header h1{
+
+    font-size:30px;
 
     font-weight:700;
+
+    color:#1b5e20;
 
 }
 
 header p{
 
+    margin-top:8px;
+
     color:#555;
 
-    margin-top:12px;
-
-    line-height:1.7;
-
-    font-size:17px;
+    font-size:15px;
 
 }
 
+/* =========================
+   CARD
+========================= */
 
-/* ===============================
-        BUTTON
-================================ */
+.scanner-card{
+
+    background:#fff;
+
+    border-radius:25px;
+
+    padding:20px;
+
+    box-shadow:
+
+        0 10px 30px rgba(0,0,0,.12);
+
+    margin-bottom:20px;
+
+}
+/* =========================
+   CAMERA FRAME
+========================= */
+
+#camera-frame{
+
+    position:relative;
+
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    background:#111;
+
+    min-height:360px;
+
+}
+
+/* Video Kamera */
+
+#webcam-container{
+
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+#webcam-container canvas{
+
+    width:100% !important;
+
+    max-width:350px;
+
+    border-radius:18px;
+
+}
+
+/* Hasil Foto */
+
+#captureCanvas{
+
+    width:100%;
+
+    max-width:350px;
+
+    border-radius:18px;
+
+}
+
+/* =========================
+   KOTAK FOKUS
+========================= */
+
+.focus-box{
+
+    position:absolute;
+
+    width:210px;
+
+    height:210px;
+
+    border:4px solid #00ff88;
+
+    border-radius:18px;
+
+    pointer-events:none;
+
+    animation:focusPulse 2s infinite;
+
+}
+
+@keyframes focusPulse{
+
+    0%{
+
+        transform:scale(.98);
+
+        opacity:.8;
+
+    }
+
+    50%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(.98);
+
+        opacity:.8;
+
+    }
+
+}
+
+/* =========================
+   GARIS SCAN
+========================= */
+
+.scan-line{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:210px;
+
+    height:4px;
+
+    background:#00ff88;
+
+    box-shadow:0 0 20px #00ff88;
+
+    animation:scanner 2s linear infinite;
+
+}
+
+@keyframes scanner{
+
+    0%{
+
+        top:75px;
+
+    }
+
+    100%{
+
+        top:275px;
+
+    }
+
+}
+
+/* =========================
+   FLASH KAMERA
+========================= */
+
+#flash{
+
+    position:absolute;
+
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+.flash{
+
+    animation:cameraFlash .35s;
+
+}
+
+@keyframes cameraFlash{
+
+    0%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+
+    margin-top:18px;
+
+    text-align:center;
+
+}
+
+.spinner{
+
+    width:55px;
+
+    height:55px;
+
+    margin:auto;
+
+    border:6px solid #ddd;
+
+    border-top:6px solid #2ecc71;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+.loading p{
+
+    margin-top:12px;
+
+    font-size:15px;
+
+    color:#2e7d32;
+
+    font-weight:600;
+
+}
+/* =========================
+   BUTTON GROUP
+========================= */
+
+.button-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-top:25px;
+
+}
+
+/* =========================
+   TOMBOL AKTIFKAN KAMERA
+========================= */
 
 #startBtn{
 
-    margin-top:30px;
+    width:100%;
 
-    background:#2e7d32;
-
-    color:white;
+    padding:16px;
 
     border:none;
 
-    padding:16px 35px;
+    border-radius:18px;
 
-    font-size:18px;
+    background:linear-gradient(
+        135deg,
+        #2ecc71,
+        #27ae60
+    );
 
-    border-radius:14px;
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
 
     cursor:pointer;
 
     transition:.3s;
 
-    box-shadow:0 6px 15px rgba(0,0,0,.15);
+    box-shadow:
+        0 8px 20px rgba(46,204,113,.35);
 
 }
 
@@ -101,292 +428,146 @@ header p{
 
     transform:translateY(-3px);
 
-    background:#1b5e20;
+}
+
+#startBtn:active{
+
+    transform:scale(.97);
 
 }
 
+/* =========================
+   TOMBOL SHUTTER
+========================= */
 
-/* ===============================
-        LOADING
-================================ */
+#captureBtn{
 
-.loading{
+    width:90px;
 
-    display:none;
+    height:90px;
 
-    margin-top:20px;
+    border-radius:50%;
 
-    font-size:17px;
+    border:8px solid white;
 
-    color:#2e7d32;
+    background:#2ecc71;
 
-}
+    cursor:pointer;
 
+    font-size:0;
 
-/* ===============================
-        KAMERA
-================================ */
+    transition:.25s;
 
-#webcam-container{
-
-    margin-top:30px;
-
-}
-
-canvas{
-
-    border-radius:20px;
-
-    border:5px solid white;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    box-shadow:
+        0 0 0 8px #dfeee4,
+        0 10px 25px rgba(0,0,0,.25);
 
 }
 
+#captureBtn:hover{
 
-/* ===============================
-        HASIL
-================================ */
+    transform:scale(1.06);
 
-.hasil{
+}
 
-    margin-top:30px;
+#captureBtn:active{
 
-    padding:25px;
+    transform:scale(.92);
 
-    border-radius:20px;
+}
+
+/* Titik tengah shutter */
+
+#captureBtn::after{
+
+    content:"";
+
+    display:block;
+
+    width:42px;
+
+    height:42px;
+
+    margin:auto;
+
+    margin-top:16px;
+
+    border-radius:50%;
 
     background:white;
 
-    text-align:left;
+}
 
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
+/* =========================
+   FOTO LAGI
+========================= */
 
-    animation:fade .5s ease;
+#resetBtn{
+
+    padding:14px 28px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#e53935;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:
+        0 8px 18px rgba(229,57,53,.35);
 
 }
 
-.hasil h2{
+#resetBtn:hover{
 
-    text-align:center;
-
-    margin-bottom:20px;
-
-    font-size:28px;
+    background:#c62828;
 
 }
 
-.hasil h3{
+#resetBtn:active{
 
-    margin-top:18px;
-
-    margin-bottom:8px;
-
-    font-size:18px;
+    transform:scale(.95);
 
 }
 
-.hasil p{
+/* =========================
+   DISABLED BUTTON
+========================= */
 
-    line-height:1.8;
+button:disabled{
 
-}
+    opacity:.55;
 
-
-/* ===============================
-        WARNA TIAP KATEGORI
-================================ */
-
-.organik{
-
-    border-left:10px solid #43a047;
+    cursor:not-allowed;
 
 }
 
-.organik h2{
+/* =========================
+   ANIMASI MUNCUL
+========================= */
 
-    color:#2e7d32;
+.fadeIn{
 
-}
-
-.anorganik{
-
-    border-left:10px solid #1e88e5;
+    animation:fadeIn .45s ease;
 
 }
 
-.anorganik h2{
-
-    color:#1565c0;
-
-}
-
-.b3{
-
-    border-left:10px solid #d32f2f;
-
-}
-
-.b3 h2{
-
-    color:#c62828;
-
-}
-
-.residu{
-
-    border-left:10px solid #616161;
-
-}
-
-.residu h2{
-
-    color:#424242;
-
-}
-
-.unknown{
-
-    border-left:10px solid orange;
-
-}
-
-.unknown h2{
-
-    color:#ef6c00;
-
-}
-
-
-/* ===============================
-        TIPS
-================================ */
-
-.tips{
-
-    margin-top:35px;
-
-    padding:20px;
-
-    border-radius:18px;
-
-    background:white;
-
-    text-align:left;
-
-    box-shadow:0 6px 20px rgba(0,0,0,.1);
-
-}
-
-.tips h3{
-
-    color:#ffffff;
-
-    margin-bottom:15px;
-
-}
-
-.tips ul{
-
-    padding-left:22px;
-
-}
-
-.tips li{
-
-    margin:10px 0;
-
-}
-
-
-/* ===============================
-        ABOUT
-================================ */
-
-.about{
-
-    margin-top:35px;
-
-    padding:25px;
-
-    background:white;
-
-    border-radius:18px;
-
-    box-shadow:0 6px 20px rgba(0,0,0,.1);
-
-}
-
-.about h2{
-
-    color:#2e7d32;
-
-    margin-bottom:15px;
-
-}
-
-.about p{
-
-    line-height:1.8;
-
-    margin-bottom:12px;
-
-}
-
-
-/* ===============================
-        FOOTER
-================================ */
-
-footer{
-
-    margin-top:40px;
-
-    color:#666;
-
-    font-size:14px;
-
-}
-
-
-/* ===============================
-        ERROR CARD
-================================ */
-
-.error-card{
-
-    background:#ffebee;
-
-    color:#b71c1c;
-
-    padding:25px;
-
-    border-radius:18px;
-
-    text-align:center;
-
-    box-shadow:0 6px 15px rgba(0,0,0,.1);
-
-}
-
-.error-card h2{
-
-    margin-bottom:15px;
-
-}
-
-
-/* ===============================
-        ANIMASI
-================================ */
-
-@keyframes fade{
+@keyframes fadeIn{
 
     from{
 
         opacity:0;
 
-        transform:translateY(15px);
+        transform:translateY(18px);
 
     }
 
@@ -399,43 +580,249 @@ footer{
     }
 
 }
+/* =========================
+   RESULT CARD
+========================= */
 
+.result-card{
 
-/* ===============================
-        RESPONSIVE HP
-================================ */
+    background:#ffffff;
 
-@media(max-width:768px){
+    margin-top:22px;
 
-    h1{
+    padding:22px;
 
-        font-size:30px;
+    border-radius:22px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.12);
+
+    animation:fadeIn .4s ease;
+
+}
+
+.placeholder{
+
+    text-align:center;
+
+    color:#666;
+
+}
+
+.placeholder h2{
+
+    color:#2e7d32;
+
+    margin-bottom:10px;
+
+}
+
+.result-title{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:18px;
+
+}
+
+.result-section{
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border-radius:16px;
+
+    background:#f8f8f8;
+
+}
+
+.result-section h3{
+
+    margin-bottom:8px;
+
+    font-size:17px;
+
+}
+
+.result-section p{
+
+    line-height:1.7;
+
+    color:#444;
+
+}
+
+/* =========================
+   WARNA TIAP JENIS SAMPAH
+========================= */
+
+.organik{
+
+    border-left:8px solid #4CAF50;
+
+}
+
+.organik .result-title{
+
+    color:#2E7D32;
+
+}
+
+.anorganik{
+
+    border-left:8px solid #2196F3;
+
+}
+
+.anorganik .result-title{
+
+    color:#1565C0;
+
+}
+
+.b3{
+
+    border-left:8px solid #FF9800;
+
+}
+
+.b3 .result-title{
+
+    color:#EF6C00;
+
+}
+
+.residu{
+
+    border-left:8px solid #616161;
+
+}
+
+.residu .result-title{
+
+    color:#424242;
+
+}
+
+/* =========================
+   INFO CARD
+========================= */
+
+.info-card{
+
+    background:white;
+
+    margin-top:22px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.10);
+
+}
+
+.info-card h2{
+
+    text-align:center;
+
+    color:#2e7d32;
+
+    margin-bottom:20px;
+
+}
+
+.info-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    margin-bottom:15px;
+
+}
+
+.info-item span{
+
+    font-size:22px;
+
+}
+
+.info-item p{
+
+    line-height:1.6;
+
+    color:#444;
+
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    text-align:center;
+
+    margin-top:30px;
+
+    padding:20px;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:480px){
+
+    body{
+
+        padding:15px;
 
     }
 
-    canvas{
+    header h1{
 
-        width:100% !important;
-
-        height:auto !important;
+        font-size:26px;
 
     }
 
-    .hasil{
+    
 
-        padding:20px;
+    #captureBtn{
 
-    }
+        width:78px;
 
-    .hasil h2{
-
-        font-size:24px;
+        height:78px;
 
     }
 
-    .container{
+    #captureBtn::after{
 
-        width:95%;
+        width:36px;
+
+        height:36px;
+
+        margin-top:13px;
+
+    }
+
+    .result-title{
+
+        font-size:22px;
 
     }
 

@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Milah.in Scanner</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css">
 
-    <!-- Font Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Tensorflow -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Teachable Machine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
 </head>
@@ -26,101 +32,198 @@
 
 <div class="container">
 
-    <!-- Header -->
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
 
     <header>
-        
+
        
-        <h1>♻️ Milah.in Scanner</h1>
+        <h1>Milah.in Scanner</h1>
 
         <p>
-            Arahkan kamera ke sampah untuk mengetahui jenis,
-            cara pengelolaan, serta waktu penguraiannya.
+
+            Scan sampah menggunakan
+            Artificial Intelligence
+
         </p>
 
     </header>
+        <!-- ========================= -->
+    <!-- AREA SCANNER -->
+    <!-- ========================= -->
 
+    <section class="scanner-card">
 
-    <!-- Kamera -->
+        <div id="camera-frame">
 
-    <section class="camera-section">
+            <!-- Kamera -->
+            <div id="webcam-container"></div>
 
-        <button id="startBtn">
+            <!-- Canvas untuk foto (awalnya disembunyikan) -->
+            <canvas
+                id="captureCanvas"
+                width="350"
+                height="350"
+                style="display:none;">
+            </canvas>
 
-            📷 Aktifkan Kamera
-
-        </button>
-
-        <div id="loading" class="loading">
-
-            Memuat model...
+            <!-- Efek flash -->
+            <div id="flash"></div>
 
         </div>
 
-        <div id="webcam-container"></div>
+        <!-- Loading -->
+        <div id="loading" class="loading" style="display:none;">
+
+            <div class="spinner"></div>
+
+            <p>🔍 Sedang menganalisis...</p>
+
+        </div>
+
+        <!-- Tombol -->
+        <div class="button-group">
+
+            <button id="startBtn">
+
+                📷 Aktifkan Kamera
+
+            </button>
+
+            <button
+                id="captureBtn"
+                style="display:none;">
+
+                📸 Ambil Foto
+
+            </button>
+
+            <button
+                id="resetBtn"
+                style="display:none;">
+
+                ❌ Foto Lagi
+
+            </button>
+
+        </div>
 
     </section>
 
 
-    <!-- Hasil Scan -->
 
-    <section>
+    <!-- ========================= -->
+    <!-- HASIL DETEKSI -->
+    <!-- ========================= -->
 
-        <div id="label-container"></div>
+    <section
+        id="label-container"
+        class="result-card">
+
+        <div class="placeholder">
+
+            <h2>
+
+                Belum Ada Hasil
+
+            </h2>
+
+            <p>
+
+                Aktifkan kamera,
+                arahkan ke objek sampah,
+                kemudian tekan
+                <b>Ambil Foto</b>.
+
+            </p>
+
+        </div>
+
+    </section>
+        <!-- ========================= -->
+    <!-- INFORMASI -->
+    <!-- ========================= -->
+
+    <section class="info-card">
+
+        <h2>♻️ Cara Menggunakan</h2>
+
+        <div class="info-item">
+
+            <span>1️⃣</span>
+
+            <p>
+                Tekan tombol
+                <b>Aktifkan Kamera</b>.
+            </p>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>2️⃣</span>
+
+            <p>
+                Arahkan kamera ke objek
+                sampah.
+            </p>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>3️⃣</span>
+
+            <p>
+                Tekan tombol
+                <b>📸 Ambil Foto</b>.
+            </p>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>4️⃣</span>
+
+            <p>
+                Tunggu kamera menganalisis
+                gambar.
+            </p>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>5️⃣</span>
+
+            <p>
+                Jika objek dikenali,
+                informasi sampah akan
+                langsung muncul.
+            </p>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>6️⃣</span>
+
+            <p>
+                Tekan
+                <b>❌ Foto Lagi</b>
+                untuk mengambil gambar
+                berikutnya.
+            </p>
+
+        </div>
 
     </section>
 
 
-    <!-- Tips -->
-
-    <section class="tips">
-
-        <h3>💡 Tips Scan</h3>
-
-        <ul>
-
-            <li>Gunakan pencahayaan yang cukup.</li>
-
-            <li>Arahkan kamera hanya ke satu objek.</li>
-
-            <li>Dekatkan objek sekitar 20–40 cm.</li>
-
-            <li>Pastikan objek terlihat jelas.</li>
-
-        </ul>
-
-    </section>
-
-
-    <!-- Tentang -->
-
-    <section class="about">
-
-        <h2>Tentang Milah.in</h2>
-
-        <p>
-
-            Milah.in merupakan aplikasi edukasi berbasis
-            Artificial Intelligence yang membantu masyarakat
-            mengenali jenis sampah dengan teknologi
-            Teachable Machine.
-
-        </p>
-
-        <p>
-
-            Setelah sampah terdeteksi,
-            aplikasi akan memberikan
-            informasi mengenai jenis sampah,
-            cara pengelolaan,
-            serta waktu penguraiannya.
-
-        </p>
-
-    </section>
-
-
-    <!-- Footer -->
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
 
     <footer>
 
@@ -130,7 +233,7 @@
 
             <br>
 
-            Smart Waste Scanner with AI
+            AI Waste Scanner
 
         </p>
 
@@ -139,7 +242,12 @@
 </div>
 
 
+<!-- ========================= -->
+<!-- SCRIPT -->
+<!-- ========================= -->
+
 <script src="script.js"></script>
 
 </body>
+
 </html>

@@ -404,40 +404,27 @@ async function predictPhoto() {
             loading.style.display = "none";
 
             labelContainer.innerHTML = `
-                <div class="result-section">
+                <div class="result-card warning fadeIn">
 
-    <h3>⏳ Waktu Penguraian</h3>
+                    <div class="result-title">
+                        ⚠️ Hasil Kurang Pasti
+                    </div>
 
-    <p>
+                    <div class="result-section">
+                        <p>
+                            Maaf, sampah tidak terdeteksi dengan cukup yakin.
+                            Silakan ambil foto ulang dengan pencahayaan yang lebih baik.
+                        </p>
+                    </div>
 
-        ${info.decomposition}
+                </div>
+            `;
 
-    </p>
-
-</div>
-
-<div class="result-section">
-
-    <button
-        id="bankBtn"
-        class="bank-button">
-
-        📍 Cari Bank Sampah Terdekat
-
-    </button>
-
-</div>
-
-</div>
-
-`;
-
-            setTimeout(() => {
-
-                resetScanner();
-
-            }, 1500);
-
+            captureBtn.style.display = "none";
+            resetBtn.style.display = "block";
+            captureBtn.disabled = false;
+            captureBtn.innerHTML = "📸 Ambil Foto";
+            isPredicting = false;
             return;
 
         }
@@ -571,20 +558,33 @@ function showResult(className, confidence, info) {
 
             </div>
 
+            <div class="result-section">
+
+                <button
+                    id="bankBtn"
+                    class="bank-button">
+
+                    📍 Cari Bank Sampah Terdekat
+
+                </button>
+
+            </div>
+
         </div>
 
     `;
-       <div class="result-section">
 
-        <button
-        id="bankBtn"
-        class="bank-button">
+    const bankBtn = document.getElementById("bankBtn");
 
-        📍 Cari Bank Sampah Terdekat
+    if (bankBtn) {
 
-       </button>
+        bankBtn.addEventListener(
+            "click",
+            openBankSampah
+        );
 
-        </div>
+    }
+
     // Scroll ke hasil
     labelContainer.scrollIntoView({
 
@@ -646,16 +646,7 @@ async function resetScanner() {
 
     // Bersihkan hasil sebelumnya
     labelContainer.innerHTML = `
-      const bankBtn = document.getElementById("bankBtn");
 
-if (bankBtn) {
-
-    bankBtn.addEventListener(
-        "click",
-        openBankSampah
-    );
-
-}
         <div class="placeholder fadeIn">
 
             <h2>
@@ -677,6 +668,7 @@ if (bankBtn) {
     `;
 
 }
+
 /*======================================================
     UTILITIES & FINAL
 ======================================================*/

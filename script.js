@@ -404,20 +404,33 @@ async function predictPhoto() {
             loading.style.display = "none";
 
             labelContainer.innerHTML = `
-                <div class="result-card fadeIn">
+                <div class="result-section">
 
-                    <h2 style="color:#e53935;">
-                        ❓ Objek Tidak Dikenali
-                    </h2>
+    <h3>⏳ Waktu Penguraian</h3>
 
-                    <p style="margin-top:15px;">
-                        Pastikan objek terlihat jelas,
-                        pencahayaan cukup,
-                        lalu coba ambil foto lagi.
-                    </p>
+    <p>
 
-                </div>
-            `;
+        ${info.decomposition}
+
+    </p>
+
+</div>
+
+<div class="result-section">
+
+    <button
+        id="bankBtn"
+        class="bank-button">
+
+        📍 Cari Bank Sampah Terdekat
+
+    </button>
+
+</div>
+
+</div>
+
+`;
 
             setTimeout(() => {
 
@@ -435,11 +448,13 @@ async function predictPhoto() {
 
         loading.style.display = "none";
 
-        showResult(
-            bestPrediction.className,
-            confidence,
-            info
-        );
+       vibrateSuccess();
+
+     showResult(
+      bestPrediction.className,
+      confidence,
+      info
+);
 
     }
 
@@ -452,7 +467,7 @@ async function predictPhoto() {
         alert(
             "Terjadi kesalahan saat melakukan prediksi."
         );
-
+        vibrateError();
         resetScanner();
 
     }
@@ -559,7 +574,17 @@ function showResult(className, confidence, info) {
         </div>
 
     `;
+       <div class="result-section">
 
+        <button
+        id="bankBtn"
+        class="bank-button">
+
+        📍 Cari Bank Sampah Terdekat
+
+       </button>
+
+        </div>
     // Scroll ke hasil
     labelContainer.scrollIntoView({
 
@@ -621,7 +646,16 @@ async function resetScanner() {
 
     // Bersihkan hasil sebelumnya
     labelContainer.innerHTML = `
+      const bankBtn = document.getElementById("bankBtn");
 
+if (bankBtn) {
+
+    bankBtn.addEventListener(
+        "click",
+        openBankSampah
+    );
+
+}
         <div class="placeholder fadeIn">
 
             <h2>
@@ -736,7 +770,7 @@ function clearResult(){
         </div>
 
     `;
-
+      
 }
 
 /**
@@ -814,3 +848,15 @@ AI Scanner Ready
 `
 
 );
+/*=========================================
+    GOOGLE MAPS
+=========================================*/
+
+function openBankSampah(){
+
+    window.open(
+        "https://www.google.com/maps/search/Bank+Sampah+Terdekat",
+        "_blank"
+    );
+
+}
